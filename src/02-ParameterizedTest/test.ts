@@ -11,4 +11,19 @@ describe('calc', () => {
     // verify
     expect(actual).toBe(expected);
   });
+
+  it.each`
+    a    | b    | expected
+    ${1} | ${2} | ${3}
+    ${1} | ${0} | ${1}
+  `(
+    'Tagged Template Literal - $a + $b = $expected',
+    ({ a, b, expected }: { a: number; b: number; expected: number }) => {
+      // exercise
+      const actual = calc(a, b);
+
+      // verify
+      expect(actual).toBe(expected);
+    },
+  );
 });
